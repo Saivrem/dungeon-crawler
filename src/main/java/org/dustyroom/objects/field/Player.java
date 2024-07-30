@@ -33,4 +33,20 @@ public class Player extends FieldObject implements Inventory {
     public void add(List<InventoryItem> inventoryItems) {
         inventory.addAll(inventoryItems);
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+
+        int fontSize = Math.min(getHeight(), getWidth()) / 2;
+        g2d.setFont(new Font("Serif", Font.PLAIN, fontSize));
+        g2d.setColor(Color.LIGHT_GRAY);
+
+        String unicodeChar = " \uD83E\uDDCD";
+        g2d.drawString(unicodeChar, getWidth() / 3, getHeight() / 2);
+    }
 }

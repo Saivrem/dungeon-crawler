@@ -14,6 +14,7 @@ public class Door extends FieldObject {
 
     public Door(int x, int y) {
         super(x, y, Color.YELLOW, true);
+        repaint();
     }
 
     public boolean checkKey(List<KeyItem> keys) {
@@ -29,5 +30,21 @@ public class Door extends FieldObject {
         }
         JOptionPane.showMessageDialog(null, "You need key!", "Info", JOptionPane.INFORMATION_MESSAGE);
         return false;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+
+        int fontSize = Math.min(getHeight(), getWidth()) / 2;
+        g2d.setFont(new Font("Serif", Font.PLAIN, fontSize));
+        g2d.setColor(Color.LIGHT_GRAY);
+
+        String unicodeChar = "\uD83D\uDEAA";
+        g2d.drawString(unicodeChar, getWidth() / 3, getHeight() / 2);
     }
 }
