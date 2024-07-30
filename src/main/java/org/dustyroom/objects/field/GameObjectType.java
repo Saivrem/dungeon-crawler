@@ -1,4 +1,4 @@
-package org.dustyroom.objects;
+package org.dustyroom.objects.field;
 
 import lombok.RequiredArgsConstructor;
 
@@ -9,7 +9,9 @@ public enum GameObjectType {
 
     FIELD(0),
     WALL(1),
-    PLAYER(2);
+    PLAYER(2),
+    DOOR(3),
+    LOOT(4);
 
     private final int objectId;
 

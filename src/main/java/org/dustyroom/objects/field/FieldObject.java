@@ -1,4 +1,4 @@
-package org.dustyroom.objects;
+package org.dustyroom.objects.field;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,16 +8,16 @@ import java.awt.*;
 
 @Getter
 @Setter
-public abstract class GameObject extends JPanel {
+public abstract class FieldObject extends JPanel {
 
     private Point point;
     private Color color;
-    private boolean isObstacle;
+    private boolean obstacle;
 
-    public GameObject(int x, int y, Color color, boolean isObstacle) {
+    public FieldObject(int x, int y, Color color, boolean obstacle) {
         this.point = new Point(x, y);
         this.color = color;
-        this.isObstacle = isObstacle;
+        this.obstacle = obstacle;
         setBackground(color);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }

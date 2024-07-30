@@ -1,14 +1,14 @@
 package org.dustyroom.levels;
 
-import org.dustyroom.objects.*;
+import org.dustyroom.objects.field.*;
 
 public class LevelBuilder {
 
-    public static GameObject[][] buildLevel(int[][] grid) {
+    public static FieldObject[][] buildLevel(int[][] grid) {
         if (grid == null || grid.length == 0) {
             throw new RuntimeException("Null grid");
         }
-        GameObject[][] objects = new GameObject[grid.length][grid.length];
+        FieldObject[][] objects = new FieldObject[grid.length][grid.length];
 
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[y].length; x++) {
@@ -18,7 +18,7 @@ public class LevelBuilder {
         return objects;
     }
 
-    private static GameObject getObject(int code, int x, int y) {
+    private static FieldObject getObject(int code, int x, int y) {
         GameObjectType TYPE = GameObjectType.getByCode(code);
         if (TYPE == null) {
             throw new RuntimeException("No Object for code");
@@ -27,6 +27,8 @@ public class LevelBuilder {
             case FIELD -> new Field(x, y);
             case WALL -> new Wall(x, y);
             case PLAYER -> new Player(x, y);
+            case DOOR -> new Door(x, y);
+            case LOOT -> new Loot(x, y);
         };
     }
 }
